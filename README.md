@@ -1,4 +1,4 @@
-# Contact handler Multi-Platform App
+# Contact Handler Multi-Platform App
 
 ## 🏗Backends
 - Spring Boot Service: A modern, robust backend utilizing the Spring Framework for dependency injection and automated configuration.
