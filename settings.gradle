@@ -1,0 +1,5 @@
+rootProject.name = 'abcd1234-idde'
+include 'jgim2241-backend'
+include 'jgim2241-desktop'
+include 'jgim2241-web'
+include 'jgim2241_spring'

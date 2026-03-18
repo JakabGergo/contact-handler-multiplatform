@@ -1,0 +1,13 @@
+plugins {
+    id 'application'
+}
+
+dependencies {
+    implementation project(":jgim2241-backend")
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.16'
+    runtimeOnly group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.12'
+}
+
+application {
+    mainClass = 'edu/bbte/idde/jgim2241/presentation/Main' // ./gradlew :jgim2241-desktop:run
+}

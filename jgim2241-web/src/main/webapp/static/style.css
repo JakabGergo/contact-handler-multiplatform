@@ -1,0 +1,35 @@
+.red-text {
+    color: red;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: blue;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    background-color: white;
+}
+
+table th, table td {
+    padding: 10px 15px;
+    text-align: left;
+    border: 1px solid grey;
+}
+
+table th {
+    background-color: gray;
+    color: blue;
+}
+
+table tr:hover {
+    background-color: gray;
+    color: blue;
+}

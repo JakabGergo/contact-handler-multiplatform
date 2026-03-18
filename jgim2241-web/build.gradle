@@ -1,0 +1,41 @@
+plugins {
+    id 'war'
+}
+
+dependencies {
+    implementation project(":jgim2241-backend")
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.18.1'
+    implementation group: 'com.github.jknack', name: 'handlebars', version: '4.4.0'
+    compileOnly group: 'jakarta.servlet', name: 'jakarta.servlet-api', version: '6.1.0'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.16'
+    runtimeOnly group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.12'
+}
+
+def deploymentName = 'jgim2241-web'
+def tomcatHome = System.getenv('CATALINA_HOME')
+logger.quiet("Tomcat home detected as '${tomcatHome}'")
+
+task deploy(type: Copy, dependsOn: 'war') {
+    doFirst {
+        if (!tomcatHome) {
+            throw new InvalidUserDataException("Tomcat home (CATALINA_HOME) not set")
+        }
+    }
+    // a "war" task kimenetét másoljuk
+    from war.archiveFile
+    // átnevezzük a war állományt a megfelelő contextRoot kialakításáért
+    rename war.archiveFileName.get(), "${deploymentName}.war"
+    // a másolás célpontja a Tomcat "webapps" almappája
+    into "${tomcatHome}/webapps"
+}
+
+
+task undeploy(type: Delete) {
+    doFirst {
+        if (!tomcatHome) {
+            throw new InvalidUserDataException("Tomcat home (CATALINA_HOME) not set")
+        }
+    }
+    // töröljük a kitelepített war file-t
+    delete "${tomcatHome}/webapps/${deploymentName}.war"
+}

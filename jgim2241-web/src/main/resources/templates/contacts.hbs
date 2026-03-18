@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="./static/style.css">
+    <title>Contact list</title>
+</head>
+
+<body>
+<h1>Contact list</h1>
+<form method="POST" action="./logout">
+    <button type="submit">Logout</button>
+</form>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Birthdate</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each this}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{name}}</td>
+                <td>{{email}}</td>
+                <td>{{phone}}</td>
+                <td>{{adress}}</td>
+                <td>{{birthdate}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+</body>
+
+</html>
